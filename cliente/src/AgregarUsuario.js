@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState  } from 'react'
 import uniquid from 'uniqid'
 import axios from 'axios'
+import {Link, useNavigate} from 'react-router-dom'
 
 function AgregarUsuario(){
-
-
+    const navegar = useNavigate()
     const[nombre, setNombre] = useState('')
     const[email, setEmail] = useState('')
     const[telefono, setTelefono] = useState('')
@@ -21,7 +21,7 @@ function agregarUsuario()
     console.log(usuario)
     axios.post('/api/usuario/agregarusuario', usuario)
     .then(res => {
-
+        navegar(0)
         alert(res.data)
     })
     .then(err => {console.log(err)})
@@ -54,12 +54,7 @@ function agregarUsuario()
                 <button onClick={agregarUsuario} className='btn btn-success'>Guardar</button>
             </div>     
         </div>
-
-
     </div>
-
-
-
     )
 }
 export default AgregarUsuario
